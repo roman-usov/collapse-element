@@ -1,6 +1,6 @@
 ## src/application.js
 
-The module implements a default export function that takes in collection of companies (an example is available in `src/index.js`) and uses the list to generate buttons (a button for each company). 
+The module implements a function exported by default that takes in a collection of companies (an example is available in `src/index.js`) and uses the list to generate buttons (a button for each company). 
 
 Clicking a button shows a company description. 
 
