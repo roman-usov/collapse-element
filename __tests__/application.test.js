@@ -19,57 +19,59 @@ beforeEach(() => {
     { id: 3, name: 'Facebook', description: 'social network' },
   ];
 
-  const initHtml = fs.readFileSync(path.join('__fixtures__', 'index.html')).toString();
+  const initHtml = fs
+    .readFileSync(path.join('__fixtures__', 'index.html'))
+    .toString();
   document.body.innerHTML = initHtml;
   run(companies);
 });
 
 test('working process', async () => {
   const company1 = companies[0];
-  await userEvent.click(screen.getByText(company1.name));
+  await userEvent.default.click(screen.getByText(company1.name));
   await waitFor(() => {
     expect(document.body).toHaveTextContent(company1.description);
   });
 
-  await userEvent.click(screen.getByText(company1.name));
+  await userEvent.default.click(screen.getByText(company1.name));
   await waitFor(() => {
     expect(document.body).not.toHaveTextContent(company1.description);
   });
 
   const company2 = companies[1];
-  await userEvent.click(screen.getByText(company2.name));
+  await userEvent.default.click(screen.getByText(company2.name));
   await waitFor(() => {
     expect(document.body).toHaveTextContent(company2.description);
   });
 
   // button 1
-  await userEvent.click(screen.getByText(company1.name));
+  await userEvent.default.click(screen.getByText(company1.name));
   await waitFor(() => {
     expect(document.body).toHaveTextContent(company1.description);
   });
 
-  await userEvent.click(screen.getByText(company1.name));
+  await userEvent.default.click(screen.getByText(company1.name));
   await waitFor(() => {
     expect(document.body).not.toHaveTextContent(company2.description);
   });
 
-  await userEvent.click(screen.getByText(company1.name));
+  await userEvent.default.click(screen.getByText(company1.name));
   await waitFor(() => {
     expect(document.body).toHaveTextContent(company1.description);
   });
 
-  await userEvent.click(screen.getByText(company1.name));
+  await userEvent.default.click(screen.getByText(company1.name));
   await waitFor(() => {
     expect(document.body).not.toHaveTextContent(company1.description);
   });
 
   const company3 = companies[2];
-  await userEvent.click(screen.getByText(company3.name));
+  await userEvent.default.click(screen.getByText(company3.name));
   await waitFor(() => {
     expect(document.body).toHaveTextContent(company3.description);
   });
 
-  await userEvent.click(screen.getByText(company3.name));
+  await userEvent.default.click(screen.getByText(company3.name));
   await waitFor(() => {
     expect(document.body).not.toHaveTextContent(company3.description);
   });
